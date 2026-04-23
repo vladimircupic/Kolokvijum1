@@ -12,6 +12,7 @@ import com.example.kolokvijum1.databinding.FragmentZadaciBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Intent;
 
 public class ZadaciFragment extends Fragment {
 
@@ -118,7 +119,8 @@ public class ZadaciFragment extends Fragment {
                 adapter.notifyDataSetChanged();
 
                 // BROADCAST
-                android.content.Intent intent = new android.content.Intent(TaskReceiver.ACTION);
+                android.content.Intent intent = new android.content.Intent("UPDATE_FAB_COLOR");
+                intent.setPackage(requireContext().getPackageName());
                 intent.putExtra("broj", lista.size());
                 requireContext().sendBroadcast(intent);
 

@@ -18,6 +18,8 @@ public class KorisniciFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        binding = FragmentKorisniciBinding.inflate(inflater, container, false);
+
         bgReceiver = new android.content.BroadcastReceiver() {
             @Override
             public void onReceive(android.content.Context context, android.content.Intent intent) {
@@ -33,7 +35,7 @@ public class KorisniciFragment extends Fragment {
                 new android.content.IntentFilter("CHANGE_BG"),
                 android.content.Context.RECEIVER_NOT_EXPORTED
         );
-        binding = FragmentKorisniciBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
     }
     @Override

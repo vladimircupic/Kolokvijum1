@@ -17,6 +17,8 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        if (runnable != null) return START_STICKY;
+
         runnable = new Runnable() {
             @Override
             public void run() {
@@ -24,12 +26,12 @@ public class MyService extends Service {
                 if (AppState.isFabRed) {
                     showNotification();
 
-                    // broadcast za promenu boje fragmenta
                     Intent i = new Intent("CHANGE_BG");
+                    i.setPackage(getPackageName());
                     sendBroadcast(i);
                 }
 
-                handler.postDelayed(this, 60000); // 1 minut
+                handler.postDelayed(this, 5000);
             }
         };
 
